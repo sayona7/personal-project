@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./pets.css";
 
 class Pets extends Component {
     constructor(props) {
@@ -8,7 +9,16 @@ class Pets extends Component {
     render() { 
         return ( 
             <div>
-                Here are your pets
+                <div className="petsWrapper">
+                    <img src="https://via.placeholder.com/150" alt="animal" />
+                    <div className="petInfo">
+                        <p>Name:</p>
+                        <p>Age:</p>
+                        <p>Breed:</p>
+                        <p>Male/female</p>
+                        <p>Description:</p>
+                    </div>
+                </div>
             </div>
          );
     }

@@ -22,7 +22,7 @@ class Login extends Component {
                     <div>
                         <h1 className="login-header">Welcome!</h1>
                         <div className="inputs-box">
-                            <p>Username</p><input />
+                            <p>Email</p><input />
                             <p>Password</p><input />
                         </div>
                     </div>

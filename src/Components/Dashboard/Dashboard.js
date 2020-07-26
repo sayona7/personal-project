@@ -4,6 +4,7 @@ import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
 import Calendar from "./Calendar/Calendar";
 import Navbar from "./Navbar/Navbar";
+import "./main.css";
 
 
 class Dashboard extends Component {
@@ -14,13 +15,12 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
-               <p>Hello from the Dashboard!</p>
-            <Link to="/about">Redirecting to: About</Link>
-            <Navbar />
-            <Calendar />
-            <Pets />
-            <Profile />
-
+                <Navbar />
+                <div className="mainWrapper">
+                    <Calendar />
+                    <Profile />
+                </div>
+                <Pets />
             </div>
         );
     }

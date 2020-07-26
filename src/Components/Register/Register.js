@@ -14,8 +14,6 @@ class Register extends Component {
                         <div className="inputs-box">
                             <p>Email:</p>
                             <input />
-                            <p>Username:</p>
-                            <input />
                             <p>Password:</p>
                             <input />
                         <div className="buttons-box">

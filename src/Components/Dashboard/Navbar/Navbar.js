@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
+import "./navbar.css";
+import {Link} from "react-router-dom";
 
 function Navbar(props) {
     return props.url === "/" ? null : 
-    <nav>
+    <nav className="navbar">
         <div>
-            About
+            <span>
+                <Link to="/about">About</Link>
+            </span>
+            <span>
+                <Link to="/chat">Chat</Link>
+            </span>
         </div>
-        <div>
-            Chat
-        </div>
-        <div>
+        <span>
             Username
+        </span>
+        <div>
+            <img src="https://via.placeholder.com/150" alt="profile"/>
         </div>
-        <div>Photo</div>
     </nav>
 }
  
