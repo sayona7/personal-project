@@ -6,3 +6,11 @@
     align-content: space-around;
     background-color: beige;
 }
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}

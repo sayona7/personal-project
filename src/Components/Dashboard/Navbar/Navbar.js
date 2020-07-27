@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 function Navbar(props) {
     return props.url === "/" ? null : 
     <nav className="navbar">
-        <div>
-            <span>
+        <div className="nav-links">
+            <span className="nav-links">
                 <Link to="/about">About</Link>
             </span>
             <span>

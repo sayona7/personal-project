@@ -3,6 +3,7 @@ create table users (
     username varchar(20),
     email varchar(20),
     password varchar(100),
+    hash varchar(500),
     profile_picture text,
     address varchar(250),
     birthday date,
