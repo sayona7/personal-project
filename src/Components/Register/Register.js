@@ -6,6 +6,7 @@ class Register extends Component {
         super(props);
         this.state = { 
             email: "",
+            confirmedPassword: "",
             password: "",
             loggedInUser: {},
          };
@@ -13,11 +14,15 @@ class Register extends Component {
 
     singup = () => {
         // this.props.history.push("/register");
-        const {email, password} = this.state;
+        const {email, password, confirmedPassword} = this.state;
+        if (password !== confirmedPassword) {
+            alert("Passwords don't match");
+        } else {
         axios.post("/auth/singup", {email, password})
             .then((res) => {
                 this.setState({loggedInUser: res.data, email: "", password: ""});
             });
+        }
     }
 
     login = () => {
@@ -51,6 +56,13 @@ class Register extends Component {
                             type="password"
                             placeholder="Password"
                             onChange={(e) => this.setState({password: e.target.value})} />
+
+                            <p>Confirm password</p>
+                            <input 
+                            type="password"
+                            placeholder="Retype password"
+                            onChange={(e) => this.setState({confirmedPassword: e.target.value})}
+                            />
 
                         <div className="buttons-box">
                             <button className="buttons" onClick={this.singup}>Register</button>

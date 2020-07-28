@@ -5,19 +5,20 @@ import {Link} from "react-router-dom";
 function Navbar(props) {
     return props.url === "/" ? null : 
     <nav className="navbar">
-        <div className="nav-links">
+        < div className="nav-links">
             <span className="nav-links">
                 <Link to="/about">About</Link>
             </span>
             <span>
                 <Link to="/chat">Chat</Link>
             </span>
-        </div>
-        <span>
-            Username
-        </span>
+            <span>
+                Username
+            </span>
+            <button>Logout</button>
         <div>
-            <img src="https://via.placeholder.com/150" alt="profile"/>
+            <img src="https://via.placeholder.com/150" alt="profile" />
+        </div>
         </div>
     </nav>
 }

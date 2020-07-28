@@ -27,7 +27,7 @@ class Login extends Component {
         .then((res) => {
             this.setState({loggedInUser: res.data, email: "", password: ""});
             this.props.history.push("/dash");
-        })
+            });
     }
 
 
@@ -57,6 +57,7 @@ class Login extends Component {
                             type="password"
                             placeholder="Password"
                             onChange={(e) => this.setState({password: e.target.value})} />
+
                         </div>
                     </div>
                     <div className="buttons-box">
