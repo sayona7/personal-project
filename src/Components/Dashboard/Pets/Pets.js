@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./pets.css";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import "./pets.css";
 
 class Pets extends Component {
 

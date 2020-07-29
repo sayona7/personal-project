@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./calendar.css";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 
 class Cal extends Component {
@@ -16,7 +17,7 @@ class Cal extends Component {
         return ( 
             <div className="cal-wrapper">
                 <Calendar/>
-                <button>Make a booking</button>
+                <button id="cal-btn">Book dates</button>
             </div>
          );
     }
