@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class Profile extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="profileWrapper">
                 <div className="profileWrapper">
                     <div>
-                        <img src="https://via.placeholder.com/150" alt="profile" />
-                        <p>Name:{this.props.user.name}</p>
+                        <img src={this.props.user.profile_pic} alt="profile" />
+                        <p>Name: {this.props.user.name}</p>
                         <p>Email:</p>
                         <p>Phone number:</p>
                         <p>Address:</p>
@@ -17,7 +18,7 @@ class Profile extends Component {
                         <p>Birthday:</p>
                     </div>
                     <div>
-                        <button>Edit Info</button>
+                        <button><Link to="/edit-profile" >Edit Info</Link></button>
                     </div>
                 </div>
             </div>

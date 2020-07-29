@@ -1,4 +1,14 @@
 /* Center tables for demo */
+
+.cal-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+
 table {
     /* margin: 0 auto; */
   }

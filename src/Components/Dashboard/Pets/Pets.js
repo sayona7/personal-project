@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import "./pets.css";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class Pets extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
+
     render() { 
         return ( 
             <div>
@@ -24,4 +23,6 @@ class Pets extends Component {
     }
 }
  
-export default Pets;
+const mapStateToProps = reduxState => reduxState.reducer;
+ 
+export default connect(mapStateToProps)(Pets);

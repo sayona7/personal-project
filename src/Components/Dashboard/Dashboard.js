@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
 import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
 import Calendar from "./Calendar/Calendar";
@@ -16,11 +15,12 @@ class Dashboard extends Component {
         return ( 
             <div>
                 <Navbar />
+                <Calendar />
                 <div className="mainWrapper">
-                    <Calendar />
                     <Profile />
+                    <Pets />
                 </div>
-                <Pets />
+                
             </div>
         );
     }

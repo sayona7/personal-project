@@ -11,6 +11,7 @@ class Navbar extends Component {
                     <div>
                         <Link to="/about" className="links">About</Link>
                         <Link to="/chat" className="links">Chat</Link>
+                        <Link to="/dash" className="links">Dashboard</Link>
                     </div>
                     <div className="nav-profile">
                         <div>

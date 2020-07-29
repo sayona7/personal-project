@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import "./calendar.css";
 
+
 class Calendar extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            events: []
+         }
     }
+
+    
     render() { 
         return ( 
-            <div>
+            <div className="cal-wrapper">
                 <table>
                     <caption>Calendar</caption>
                     <thead>
@@ -53,6 +58,7 @@ class Calendar extends Component {
                         </tr>
                     </tfoot>
                 </table>
+                <button>Make a booking</button>
             </div>
          );
     }

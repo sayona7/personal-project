@@ -24,7 +24,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    width: 80%;
+    width: 60%;
 }
 
 #nav-img-div {
@@ -47,6 +47,7 @@ display: inline-block;
 border: none;
 transition: all 0.4s ease 0s;
 height: 50px;
+width: auto;
 }
 
 #nav-btn:hover {
@@ -56,4 +57,8 @@ letter-spacing: 1px;
 -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
 box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 transition: all 0.4s ease 0s;
+}
+
+a {
+    text-decoration: none;
 }
