@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
-import Calendar from "./Calendar/Calendar";
+import Cal from "./Calendar/Calendar";
 import Navbar from "./Navbar/Navbar";
 import "./main.css";
 
@@ -15,7 +15,7 @@ class Dashboard extends Component {
         return ( 
             <div>
                 <Navbar />
-                <Calendar />
+                <Cal />
                 <div className="mainWrapper">
                     <Profile />
                     <Pets />
