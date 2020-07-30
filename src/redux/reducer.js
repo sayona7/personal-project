@@ -1,18 +1,14 @@
 import axios from "axios";
 
 const initialState = {
-    user: {
-        name: null,
-        email: null,
-        profile_pic: "https://via.placeholder.com/150"
-    }
+    user: {}
 }
 
 // action type variables
 
 const GET_USER = "GET_USER";
 
-const REQUEST_USER = "REQUEST_USER";
+// const REQUEST_USER = "REQUEST_USER";
 
 const CLEAR_USER = "CLEAR_USER";
 
@@ -20,19 +16,13 @@ const CLEAR_USER = "CLEAR_USER";
 // action creators
 
 export function getUser(user) {
+    // let data = axios.get("/api/user")
+    // .then(res => res.data)
     return {
         type: GET_USER,
         payload: user
     }
 }
-
-// export const requestUserData = () => {
-//     let data = axios.get("/auth/user-data").then(res => res.data)
-//     return {
-//         type: REQUEST_USER,
-//         payload: data
-//     }
-// }
 
 
 export function clearUser() {

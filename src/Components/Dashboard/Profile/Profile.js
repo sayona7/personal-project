@@ -10,8 +10,8 @@ class Profile extends Component {
             <div >
                 <div className="profileWrapper">
                     <div className="div-wr">
-                        <img src={this.props.user.profile_pic} alt="profile" />
-                        <p>Name: {this.props.user.name}</p>
+                        <img src={this.props.user.profile_picture} alt="img of the user" />
+                        <p>Name: {this.props.user.username}</p>
                         <p>Email:</p>
                         <p>Phone number:</p>
                         <p>Address:</p>

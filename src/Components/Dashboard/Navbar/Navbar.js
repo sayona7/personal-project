@@ -24,6 +24,7 @@ class Navbar extends Component {
     }
 
     render () {
+        console.log(this.props.user);
         return (
             <nav>
                 <div className="nav-links">
@@ -34,11 +35,11 @@ class Navbar extends Component {
                     </div>
                     <div className="nav-profile">
                         <div>
-                            <p>Welcome {this.props.user.name}</p>
+                            <p>Welcome {this.props.user.username}</p>
                             
                         </div>
                         <div id="nav-img-div">
-                            <img src={this.props.user.profile_pic} alt="profile" id="nav-pic"/>
+                            <img src={this.props.user.profile_picture} alt="profile" id="nav-pic"/>
                         </div>
                         <div>
                         <button id="nav-btn" onClick={this.handleLogout}>Logout</button>
