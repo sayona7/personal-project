@@ -1,7 +1,7 @@
 import React, {Component} from  "react";
 import {connect} from "react-redux";
 import Navbar from "../Navbar/Navbar";
-import "./editProfile.css";
+import "./profile.css";
 
 class EditProfile extends Component {
 

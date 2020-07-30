@@ -2,8 +2,27 @@ import React, { Component } from 'react';
 import "./navbar.css";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import {getUser, clearUser} from "../../../redux/reducer";
+import axios from 'axios';
 
 class Navbar extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+           
+        }
+    }
+
+    handleLogout = () => {
+        axios.get("/auth/logout")
+        .then(() => {
+            // clear the user from redux
+            this.props.clearUser();
+            // route the user back to landing
+            this.props.history.push("/");
+        }).catch(err => console.log(err));
+    }
+
     render () {
         return (
             <nav>
@@ -16,10 +35,13 @@ class Navbar extends Component {
                     <div className="nav-profile">
                         <div>
                             <p>Welcome {this.props.user.name}</p>
-                            <button id="nav-btn">Logout</button>
+                            
                         </div>
                         <div id="nav-img-div">
                             <img src={this.props.user.profile_pic} alt="profile" id="nav-pic"/>
+                        </div>
+                        <div>
+                        <button id="nav-btn" onClick={this.handleLogout}>Logout</button>
                         </div>
                     </div>
                 </div>
@@ -30,4 +52,4 @@ class Navbar extends Component {
 
 const mapStateToProps = reduxState => reduxState.reducer;
  
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, {getUser, clearUser})(Navbar);

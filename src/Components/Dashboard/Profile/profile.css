@@ -1,0 +1,24 @@
+/* Profile Styling */
+.profileWrapper {
+    margin: 10px;
+    background-color: beige;
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+/* EditProfile Styling */
+.edit-wrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+}
+
+

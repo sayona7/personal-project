@@ -12,11 +12,12 @@ class Pets extends Component {
                 <div className="petsWrapper">
                     <img src="https://via.placeholder.com/150" alt="animal" />
                     <div className="petInfo">
-                        <p>Name:</p>
-                        <p>Age:</p>
-                        <p>Breed:</p>
+                        <p>Name</p>
+                        <p>Age</p>
+                        <p>Breed</p>
                         <p>Male/female</p>
-                        <p>Description:</p>
+                        <p>Description</p>
+                        <Link to="/edit-pet"><button>Edit</button></Link>
                     </div>
                 </div>
             </div>

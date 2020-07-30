@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./calendar.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import {Link} from "react-router-dom";
 
 
 class Cal extends Component {
@@ -17,7 +18,7 @@ class Cal extends Component {
         return ( 
             <div className="cal-wrapper">
                 <Calendar/>
-                <button id="cal-btn">Book dates</button>
+                <Link to="/booking"><button id="cal-btn">Book dates</button></Link>
             </div>
          );
     }

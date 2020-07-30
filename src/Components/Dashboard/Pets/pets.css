@@ -1,3 +1,10 @@
 .petsWrapper {
     margin: 10px;
+    background-color: beige;
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
 }

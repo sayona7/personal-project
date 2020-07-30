@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express"),
       massive = require("massive"),
       session = require("express-session"),
-      ctrl = require("./auth");
+      auth = require("./auth");
 const app = express();
 
 // import controllers here
@@ -32,10 +32,10 @@ app.use(
     })
 );
 
-app.post("/auth/singup", ctrl.singup);
-app.post("/auth/login", ctrl.login);
-app.get("/auth/logout", ctrl.logout);
-app.get("/auth/user", ctrl.user);
+app.post("/auth/singup", auth.singup);
+app.post("/auth/login", auth.login);
+app.get("/auth/logout", auth.logout);
+app.get("/auth/user", auth.user);
 
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`));
