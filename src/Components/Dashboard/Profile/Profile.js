@@ -13,10 +13,10 @@ class Profile extends Component {
                         <img src={this.props.user.profile_picture} alt="img of the user" />
                         <p>Name: {this.props.user.username}</p>
                         <p>Email: {this.props.user.email}</p>
-                        <p>Phone number:</p>
-                        <p>Address:</p>
+                        <p>Phone number: {this.props.user.phone_number}</p>
+                        <p>Address: {this.props.user.address} </p>
                         <p>Password:</p>
-                        <p>Birthday:</p>
+                        <p>Birthday: {this.props.user.birthday}</p>
                     </div>
                     <div>
                         <button><Link to="/edit-profile" >Edit Info</Link></button>

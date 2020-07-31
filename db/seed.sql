@@ -7,7 +7,7 @@ create table users (
     profile_picture text,
     address varchar(250),
     birthday date,
-    phone_number int
+    phone_number varchar(15),
 );
 
 create table pets (

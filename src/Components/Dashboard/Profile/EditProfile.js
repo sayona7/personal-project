@@ -17,7 +17,7 @@ class EditProfile extends Component {
             editBirthday: false,
             username: "",
             email: "",
-            phone: "",
+            phone_number: "",
             address: "",
             password: "",
             birthday: ""
@@ -62,7 +62,7 @@ class EditProfile extends Component {
     }
 
     handlePhone = (val) => {
-        this.setState({phone: val});
+        this.setState({phone_number: val});
     }
 
     handleAddress = (val) => {
@@ -106,18 +106,42 @@ class EditProfile extends Component {
     }
 
     updatePhone = () => {
-        const {phone} = this.state;
+        const {phone_number} = this.state;
 
-        axios.put(`/api/user/${this.props.user.user_id}/phone`, {phone})
+        axios.put(`/api/user/${this.props.user.user_id}/phone`, {phone_number})
         .then(res => {
+            console.log(phone_number);
             this.props.getUser(res.data[0]);
             this.handleEditPhone();
-            this.setState({email: ""});
+            this.setState({phone: ""});
+        })
+    }
+
+    updateAddress = () => {
+        const {address} = this.state;
+
+        axios.put(`/api/user/${this.props.user.user_id}/address`, {address})
+        .then(res => {
+            this.props.getUser(res.data[0]);
+            this.handleEditAddress();
+            this.setState({address: ""});
+        })
+    }
+
+    updateBirthday = () => {
+        const {birthday} = this.state;
+
+        axios.put(`/api/user/${this.props.user.user_id}/birthday`, {birthday})
+        .then(res => {
+            this.props.getUser(res.data[0]);
+            this.handleEditBirthday();
+            this.setState({birthday: ""});
         })
     }
     // BACKEND CALLS
 
     render() { 
+        console.log(this.props.user);
         return ( 
             <div>
                 <Navbar history={this.props.history}/>
@@ -129,6 +153,7 @@ class EditProfile extends Component {
                 <div className="edit-wrapper">
                     <h3>Information</h3>
 
+                    {/* Change username */}
                     {!this.state.editView
                     ? 
                     <div>
@@ -145,6 +170,7 @@ class EditProfile extends Component {
                             <button onClick={this.updateUsername}>Submit</button>
                     </div>)}
                     
+                    {/* Change email */}
                     {!this.state.editViewEmail
                     ? 
                     <div>
@@ -161,10 +187,11 @@ class EditProfile extends Component {
                         </div>
                     )}
                     
+                    {/* Change phone */}
                     {!this.state.editPhone
                     ?
                     <div>
-                        <p>Phone number: {this.props.user.phone}</p>
+                        <p>Phone number: {this.props.user.phone_number}</p>
                         <button onClick={this.handleEditPhone} >Edit</button>
                     </div>
                     : (
@@ -176,12 +203,41 @@ class EditProfile extends Component {
                             <button onClick={this.updatePhone} >Submit</button>
                         </div>
                     )}
-                    <p>Address:</p>
-                    <button>Edit</button>
+
+                    {/* Change address */}
+                    {!this.state.editAddress
+                    ?
+                    <div><p>Address: {this.props.user.address}</p>
+                    <button onClick={this.handleEditAddress}>Edit</button></div>
+                    : (
+                        <div>
+                            <input 
+                            value={this.state.address}
+                            placeholder="Enter your address"
+                            onChange={(e) => this.handleAddress(e.target.value)} />
+                            <button onClick={this.updateAddress}>Submit</button>
+                        </div>
+                    )}
+                    
+                    {/* Change password */}
                     <p>Password:</p>
                     <button>Edit</button>
-                    <p>Birthday:</p>
-                    <button>Edit</button>
+
+                    {/* Change birthday */}
+                    {!this.state.editBirthday
+                    ?
+                    <div><p>Birthday: {this.props.user.birthday}</p>
+                    <button onClick={this.handleEditBirthday}>Edit</button></div>
+                    : (
+                        <div>
+                            <input 
+                            value={this.state.birthday}
+                            placeholder="Enter your birthday"
+                            onChange={(e) => this.handleBirthday(e.target.value)} />
+                            <button onClick={this.updateBirthday}>Submit</button>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
          );
