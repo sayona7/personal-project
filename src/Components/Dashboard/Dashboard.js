@@ -4,6 +4,8 @@ import Pets from "./Pets/Pets";
 import Cal from "./Calendar/Calendar";
 import Navbar from "./Navbar/Navbar";
 import "./main.css";
+import axios from 'axios';
+import {connect} from 'react-redux';
 
 
 class Dashboard extends Component {
@@ -11,6 +13,13 @@ class Dashboard extends Component {
         super(props);
         this.state = {  }
     }
+
+    // componentDidMount() {
+    //     if(!this.props.user.email) {
+    //         this.props.history.push("/");
+    //     }
+    // }
+
     render() { 
         return ( 
             <div>
@@ -26,4 +35,6 @@ class Dashboard extends Component {
     }
 }
  
-export default Dashboard;
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps)(Dashboard);

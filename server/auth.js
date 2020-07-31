@@ -13,14 +13,14 @@ module.exports = {
         const hash = await bcrypt.hash(password, 10);
 
         // send stuff to db
-        const newUser = await db.auth.add_user({email, hash})
+        const newUser = await db.auth.add_user({email, password: hash})
         delete newUser[0].hash;
 
         // log user in by creating session
-        req.session.user = { ...newUser[0]};
+        req.session.user = newUser[0];
 
-        // send session info in respone so front end can decide how to use it
-        res.status(200).send(req.session.user);
+        // send session info in response so front end can decide how to use it
+        res.status(201).send(req.session.user);
     },
     login: async (req, res) => {
         const db = req.app.get("db");
@@ -38,9 +38,9 @@ module.exports = {
 
         // log user in by creating session
         delete foundUser[0].hash;
-        req.session.user = { ...foundUser[0]};
+        req.session.user = foundUser[0];
 
-        res.status(200).send(req.session.user);
+        res.status(202).send(req.session.user);
     },
     logout: (req, res) => {
         // we don't need any info to destroy the session

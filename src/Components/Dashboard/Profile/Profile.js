@@ -12,7 +12,7 @@ class Profile extends Component {
                     <div className="div-wr">
                         <img src={this.props.user.profile_picture} alt="img of the user" />
                         <p>Name: {this.props.user.username}</p>
-                        <p>Email:</p>
+                        <p>Email: {this.props.user.email}</p>
                         <p>Phone number:</p>
                         <p>Address:</p>
                         <p>Password:</p>

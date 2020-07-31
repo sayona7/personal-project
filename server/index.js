@@ -41,5 +41,10 @@ app.get("/auth/user", auth.user);
 
 // update controllers
 app.put("/api/user/:id", user.updateUsername);
+app.put("/api/user/:id/email", user.updateEmail);
+app.put("/api/user/:id/password", user.updatePassword);
+app.put("/api/user/:id/phone", user.updatePhone);
+app.put("/api/user/:id/address", user.updateAddress);
+app.put("/api/user/:id/birthday", user.updateBirthday);
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`));

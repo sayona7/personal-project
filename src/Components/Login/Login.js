@@ -31,13 +31,8 @@ class Login extends Component {
     }
 
 
-    logout = () => {
-        axios.get("auth/logout");
-        this.setState({loggedInUser: {} });
-    }
-
     render() {
-        let {loggedInUser, email, password} = this.state; 
+        let {email, password} = this.state; 
         return ( 
             <div className="wrapper"> 
                 <div className="login-box">
