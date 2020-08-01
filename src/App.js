@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
 import routes from "./routes";
+import {withRouter} from "react-router-dom";
+import Navbar from './Components/Dashboard/Navbar/Navbar';
 
-function App() {
+function App(props) {
   return (
-    <div>{routes}</div>
+    <div>
+      {props.location.pathname === "/" ?
+      null 
+      : (
+        <Navbar history={props.history}/>
+      )}
+      {routes}
+      </div>
   );
 }
  
-export default App;
+export default withRouter(App);

@@ -1,14 +1,13 @@
 
 
 const initialState = {
-    user: {}
+    user: {},
+    profile: {}
 }
 
 // action type variables
 
 const GET_USER = "GET_USER";
-
-// const REQUEST_USER = "REQUEST_USER";
 
 const CLEAR_USER = "CLEAR_USER";
 
@@ -16,8 +15,6 @@ const CLEAR_USER = "CLEAR_USER";
 // action creators
 
 export function getUser(user) {
-    // let data = axios.get("/api/user")
-    // .then(res => res.data)
     return {
         type: GET_USER,
         payload: user
@@ -40,9 +37,6 @@ export default function reducer(state = initialState, action) {
     switch(type) {
         case GET_USER:
             return {...state, user: payload};
-        // case REQUEST_USER:
-        //     const {email, name} = action.payload.data
-        //     return {...state, user: email, name}
         case CLEAR_USER:
             return {...state, user: payload};
         default:

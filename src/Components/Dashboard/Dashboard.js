@@ -23,7 +23,7 @@ class Dashboard extends Component {
     render() { 
         return ( 
             <div>
-                <Navbar history={this.props.history}/>
+                {/* <Navbar history={this.props.history}/> */}
                 <Cal />
                 <div className="mainWrapper">
                     <Profile />

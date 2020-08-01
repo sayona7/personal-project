@@ -81,73 +81,28 @@ class EditProfile extends Component {
 
     // BACKEND CALLS
 
-    updateUsername = () => {
-        const {username} = this.state;
+    updateUserInfo = () => {
+        const {username, email, phone_number, address, password, birthday} = this.state;
 
-        axios.put(`/api/user/${this.props.user.user_id}`, {username})
+        axios.put(`/api/user/${this.props.user.user_id}`, {username, email, phone_number, address, password, birthday})
         .then(res => {
             console.log(res.data);
             this.props.getUser(res.data[0]);
-            this.handleEditView();
-            this.setState({username: ""});
+            this.setState({username: username});
         })
         .catch(err => console.log(err));
     }
 
-    updateEmail = () => {
-        const {email} = this.state;
 
-        axios.put(`/api/user/${this.props.user.user_id}/email`, {email})
-        .then(res => {
-            this.props.getUser(res.data[0]);
-            this.handleEditEmail();
-            this.setState({email: ""});
-        })
-    }
-
-    updatePhone = () => {
-        const {phone_number} = this.state;
-
-        axios.put(`/api/user/${this.props.user.user_id}/phone`, {phone_number})
-        .then(res => {
-            console.log(phone_number);
-            this.props.getUser(res.data[0]);
-            this.handleEditPhone();
-            this.setState({phone: ""});
-        })
-    }
-
-    updateAddress = () => {
-        const {address} = this.state;
-
-        axios.put(`/api/user/${this.props.user.user_id}/address`, {address})
-        .then(res => {
-            this.props.getUser(res.data[0]);
-            this.handleEditAddress();
-            this.setState({address: ""});
-        })
-    }
-
-    updateBirthday = () => {
-        const {birthday} = this.state;
-
-        axios.put(`/api/user/${this.props.user.user_id}/birthday`, {birthday})
-        .then(res => {
-            this.props.getUser(res.data[0]);
-            this.handleEditBirthday();
-            this.setState({birthday: ""});
-        })
-    }
     // BACKEND CALLS
 
     render() { 
         console.log(this.props.user);
         return ( 
             <div>
-                <Navbar history={this.props.history}/>
                 <div className="edit-wrapper">
                     <p>Profile photo</p>
-                    <img src={this.props.user.profile_picture} alt={this.props.user.username}/>
+                    <img src={this.props.user.profile_picture} alt={this.state.username}/>
                     <button>Upload</button>
                 </div>
                 <div className="edit-wrapper">
@@ -157,7 +112,7 @@ class EditProfile extends Component {
                     {!this.state.editView
                     ? 
                     <div>
-                        <p>Name: {this.props.user.username}</p>
+                        <p>Name: {this.state.username}</p>
                         <button onClick={this.handleEditView}>Edit</button>
                         </div>
                     : (
@@ -167,14 +122,14 @@ class EditProfile extends Component {
                             placeholder="Enter new name"
                             onChange={(e) => this.handleUsername(e.target.value)}
                             />
-                            <button onClick={this.updateUsername}>Submit</button>
+                            <button onClick={this.handleEditView}>Submit</button>
                     </div>)}
                     
                     {/* Change email */}
-                    {!this.state.editViewEmail
+                    {!this.state.editEmail
                     ? 
                     <div>
-                        <p>Email: {this.props.user.email}</p>
+                        <p>Email: {this.state.email}</p>
                         <button onClick={this.handleEditEmail}>Edit</button>
                     </div>
                     : (
@@ -183,7 +138,7 @@ class EditProfile extends Component {
                             value={this.state.email}
                             placeholder="Enter new email"
                             onChange={(e) => this.handleEmail(e.target.value)}/>
-                            <button onClick={this.updateEmail}>Submit</button>
+                            <button onClick={this.handleEditEmail}>Submit</button>
                         </div>
                     )}
                     
@@ -191,7 +146,7 @@ class EditProfile extends Component {
                     {!this.state.editPhone
                     ?
                     <div>
-                        <p>Phone number: {this.props.user.phone_number}</p>
+                        <p>Phone number: {this.state.phone_number}</p>
                         <button onClick={this.handleEditPhone} >Edit</button>
                     </div>
                     : (
@@ -200,14 +155,14 @@ class EditProfile extends Component {
                             value={this.state.phone}
                             placeholder="Enter new phone number"
                             onChange={(e) => this.handlePhone(e.target.value)} />
-                            <button onClick={this.updatePhone} >Submit</button>
+                            <button onClick={this.handleEditPhone} >Submit</button>
                         </div>
                     )}
 
                     {/* Change address */}
                     {!this.state.editAddress
                     ?
-                    <div><p>Address: {this.props.user.address}</p>
+                    <div><p>Address: {this.state.address}</p>
                     <button onClick={this.handleEditAddress}>Edit</button></div>
                     : (
                         <div>
@@ -215,7 +170,7 @@ class EditProfile extends Component {
                             value={this.state.address}
                             placeholder="Enter your address"
                             onChange={(e) => this.handleAddress(e.target.value)} />
-                            <button onClick={this.updateAddress}>Submit</button>
+                            <button onClick={this.handleEditAddress}>Submit</button>
                         </div>
                     )}
                     
@@ -226,7 +181,7 @@ class EditProfile extends Component {
                     {/* Change birthday */}
                     {!this.state.editBirthday
                     ?
-                    <div><p>Birthday: {this.props.user.birthday}</p>
+                    <div><p>Birthday: {this.state.birthday}</p>
                     <button onClick={this.handleEditBirthday}>Edit</button></div>
                     : (
                         <div>
@@ -234,11 +189,12 @@ class EditProfile extends Component {
                             value={this.state.birthday}
                             placeholder="Enter your birthday"
                             onChange={(e) => this.handleBirthday(e.target.value)} />
-                            <button onClick={this.updateBirthday}>Submit</button>
+                            <button onClick={this.handleEditBirthday}>Submit</button>
                         </div>
                     )}
                     
                 </div>
+                <button onClick={this.updateUserInfo}>Save</button>
             </div>
          );
     }

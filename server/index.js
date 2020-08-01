@@ -3,7 +3,8 @@ const express = require("express"),
       massive = require("massive"),
       session = require("express-session"),
       auth = require("./auth"),
-      user = require("./userController");
+      user = require("./userController"),
+      pet = require("./petController");
 const app = express();
 
 // import controllers here
@@ -39,12 +40,10 @@ app.post("/auth/login", auth.login);
 app.get("/auth/logout", auth.logout);
 app.get("/auth/user", auth.user);
 
-// update controllers
-app.put("/api/user/:id", user.updateUsername);
-app.put("/api/user/:id/email", user.updateEmail);
-app.put("/api/user/:id/password", user.updatePassword);
-app.put("/api/user/:id/phone", user.updatePhone);
-app.put("/api/user/:id/address", user.updateAddress);
-app.put("/api/user/:id/birthday", user.updateBirthday);
+// profile update controllers
+app.put("/api/user/:id", user.updateUserInfo);
+
+// pet update controllers
+app.post("/api/pet/add", pet.addPet);
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`));

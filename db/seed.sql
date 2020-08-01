@@ -6,7 +6,7 @@ create table users (
     hash varchar(500),
     profile_picture text,
     address varchar(250),
-    birthday date,
+    birthday varchar(25),
     phone_number varchar(15),
 );
 
@@ -41,3 +41,8 @@ create table calendar (
     year int,
     available int
 );
+
+-- select *
+-- from pets p
+-- join users u
+-- on u.user_id = p.user_id;

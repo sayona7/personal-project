@@ -7,7 +7,7 @@ class Profile extends Component {
 
     render() { 
         return ( 
-            <div >
+            <div>
                 <div className="profileWrapper">
                     <div className="div-wr">
                         <img src={this.props.user.profile_picture} alt="img of the user" />

@@ -1,5 +1,5 @@
 .petsWrapper {
-    margin: 10px;
+    margin: auto;
     background-color: beige;
     width: 350px;
     height: auto;
@@ -7,4 +7,26 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
 }
+
+.pets-Wrapper {
+    margin: auto;
+    background-color: beige;
+    width: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    /* width: 50%; */
+}
+
+.editpets-wrapper {
+    margin: 15px;
+}
+

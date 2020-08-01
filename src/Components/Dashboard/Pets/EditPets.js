@@ -10,26 +10,29 @@ class EditPets extends Component {
         return ( 
             <div>
                 <Navbar />
-                <div className="pets-wrapper">
-                    <p>Profile photo</p>
-                    <img src={this.props.user.profile_pic} alt="placeholder"/>
-                    <button>Upload</button>
-                </div>
-                <div className="pets-wrapper">
-                <h3>Information</h3>
-                <p>Name:</p>
-                <button>Edit</button>
-                <p>Age:</p>
-                <button>Edit</button>
-                <p>Breed</p>
-                <button>Edit</button>
-                <p>Gender</p>
-                <select>
-                    <option>Female</option>
-                    <option>Male</option>
-                </select>
-                <p>Description</p>
-                <button>Edit</button>
+                <div className="editpets-wrapper">
+                    <div className="petsWrapper">
+                        <p>Profile photo</p>
+                        <img src={this.props.user.profile_pic} alt="placeholder"/>
+                        <button>Upload</button>
+                    </div>
+                    
+                    <div className="petsWrapper">
+                        <h3>Information</h3>
+                        <p>Name:</p>
+                        <button>Edit</button>
+                        <p>Age:</p>
+                        <button>Edit</button>
+                        <p>Breed</p>
+                        <button>Edit</button>
+                        <p>Gender</p>
+                        <select>
+                            <option>Female</option>
+                            <option>Male</option>
+                        </select>
+                        <p>Description</p>
+                        <button>Edit</button>
+                    </div>
                 </div>
             </div>
          );

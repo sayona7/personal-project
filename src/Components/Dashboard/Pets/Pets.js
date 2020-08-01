@@ -3,28 +3,51 @@ import "./pets.css";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import "./pets.css";
+import Pet from "./Pet";
+import axios from 'axios';
+import {getPet} from "../../../redux/petReducer";
 
 class Pets extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            pets: [],
+            user_id: "",
+            name: "",
+        }
+    }
+
+    addPet = () => {
+        const {user_id, name} = this.state;
+
+        axios.post("/api/pet/add", {user_id, name})
+        .then((res) => {
+            this.props.getPet(res.data[0]);
+        })
+        
+    }
+
+    deletePet = () => {
+
+    }
+
 
     render() { 
+        const listedPets = this.state.pets.map((id, index) => (
+                            <div>
+                                <Pet key={index} id={id}/>
+                                <button>Delete</button>
+                            </div>
+                        ))
         return ( 
-            <div>
-                <div className="petsWrapper">
-                    <img src="https://via.placeholder.com/150" alt="animal" />
-                    <div className="petInfo">
-                        <p>Name</p>
-                        <p>Age</p>
-                        <p>Breed</p>
-                        <p>Male/female</p>
-                        <p>Description</p>
-                        <Link to="/edit-pet"><button>Edit</button></Link>
-                    </div>
-                </div>
+            <div className="editpets-wrapper">
+                {listedPets}     
+                <button onClick={this.addPet}>Add your pet!</button>
             </div>
          );
     }
 }
  
-const mapStateToProps = reduxState => reduxState.reducer;
+const mapStateToProps = reduxState => reduxState.petReducer;
  
-export default connect(mapStateToProps)(Pets);
+export default connect(mapStateToProps, {getPet})(Pets);
