@@ -18,13 +18,6 @@ class Pet extends Component {
          }
     }
     
-    handleInput = (e) => {
-        this.setState({ [e.target.name]: e.target.value })
-    }
-
-    handleSubmit = (e) => {
-        this.props.addPet({...this.state})
-    }
 
     render() { 
         return ( 

@@ -49,11 +49,22 @@ class Pets extends Component {
 
 
     render() { 
+        console.log(this.props.petsArray)
+        // const mappedPets = this.props.petsArray((index) => (
+        //     <Pet
+        //     key={index}
+        //     name={this.props.pet.name}
+        //     age={this.props.pet.age}
+        //     breed={this.props.pet.breed}
+        //     gender={this.props.pet.gender}
+        //     description={this.props.pet.description} />
+        // ))
 
         return ( 
             <div className="editpets-wrapper">
                 <div>
                     <Link to="/edit-pet">
+                        {/* {mappedPets} */}
                         <button>Add your pet!</button>
                     </Link>
                 </div>

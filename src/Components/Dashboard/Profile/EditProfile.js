@@ -199,7 +199,7 @@ class EditProfile extends Component {
                     </div>
                     : (
                         <div className="edit-wrapper-m centering-div">
-                            <h4 className="edit-h4">Birthday {this.state.birthday} </h4>
+                            <h4 className="edit-h4">Birthday: {this.state.birthday} </h4>
                             <input 
                             value={this.state.birthday}
                             placeholder="Enter your birthday"

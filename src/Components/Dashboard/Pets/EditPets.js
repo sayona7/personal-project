@@ -1,6 +1,7 @@
 import React, {Component} from  "react";
 import {connect} from "react-redux";
 import "./pets.css";
+import {addPet} from "../../../redux/petReducer";
 
 class EditPets extends Component {
     constructor(props) {
@@ -11,11 +12,11 @@ class EditPets extends Component {
             editBreedView: false,
             editGenderView: false,
             editDescriptionView: false,
-            name: "",
-            age: null,
-            breed: "",
-            gender: "",
-            description: ""
+            name: this.props.pet.name,
+            age: this.props.pet.age,
+            breed: this.props.pet.breed,
+            gender: this.props.pet.gender,
+            description: this.props.pet.description
         }
     }
 
@@ -46,6 +47,11 @@ class EditPets extends Component {
         this.setState({editDescriptionView: !this.state.editDescriptionView});
     }
 
+    handleSubmit = (e) => {
+        this.props.addPet({...this.state});
+        console.log(this.props);
+    }
+
     render() { 
         return ( 
             <div>
@@ -64,14 +70,17 @@ class EditPets extends Component {
                         {!this.state.editNameView 
                         ? 
                         <div>
-                            <h4>Name: {this.props.pet.name}</h4>
+                            <h4>Name: {this.state.name}</h4>
                             <button onClick={this.handleNameView}>Edit</button>
                         </div>
                         :
                         <div>
-                            <h4>Name:</h4>
-                            <input name='name' onChange={this.handleInput} />
-                            <button>Save</button>
+                            <h4>Name: {this.state.name}</h4>
+                            <input
+                            value={this.state.name} 
+                            name='name' 
+                            onChange={this.handleInput} />
+                            <button onClick={this.handleNameView}>Save</button>
                         </div>
                         }
 
@@ -83,9 +92,9 @@ class EditPets extends Component {
                         </div>
                         :
                         <div>
-                            <h4>Age:</h4>
+                            <h4>Age: {this.state.age}</h4>
                             <input name="age" onChange={this.handleInput} />
-                            <button>Save</button>
+                            <button onClick={this.handleAgeView}>Save</button>
                         </div>
                         }
 
@@ -97,9 +106,9 @@ class EditPets extends Component {
                         </div>
                         :
                         <div>
-                            <h4>Breed:</h4>
+                            <h4>Breed: {this.state.breed}</h4>
                             <input name='breed' onChange={this.handleInput} />
-                            <button>Save</button>
+                            <button onClick={this.handleBreedView}>Save</button>
                         </div>
                         }
 
@@ -111,9 +120,9 @@ class EditPets extends Component {
                         </div>
                         :
                         <div>
-                            <h4>Gender:</h4>
+                            <h4>Gender: {this.state.gender}</h4>
                             <input name='gender' onChange={this.handleInput} />
-                            <button>Save</button>
+                            <button onClick={this.handleGenderView}>Save</button>
                             {/* <select>
                             <option>Female</option>
                             <option>Male</option>
@@ -129,13 +138,14 @@ class EditPets extends Component {
                         </div>
                         :
                         <div>
-                            <h4>Description:</h4>
+                            <h4>Description: </h4>
                             <input name='description' onChange={this.handleInput} />
-                            <button>Save</button>
+                            <button onClick={this.handleDescriptionView}>Save</button>
                         </div>
                         }
 
                     </div>
+                    <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
                 </div>
             </div>
          );
@@ -144,4 +154,4 @@ class EditPets extends Component {
  
 const mapStateToProps = reduxState => reduxState.petReducer;
  
-export default connect(mapStateToProps)(EditPets);
+export default connect(mapStateToProps, {addPet})(EditPets);
