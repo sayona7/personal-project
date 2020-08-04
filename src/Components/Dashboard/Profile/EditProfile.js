@@ -1,7 +1,6 @@
 import React, {Component} from  "react";
 import {connect} from "react-redux";
 import {getUser} from "../../../redux/reducer";
-import Navbar from "../Navbar/Navbar";
 import "./profile.css";
 import axios from "axios";
 
@@ -15,14 +14,19 @@ class EditProfile extends Component {
             editAddress: false,
             editPassword: false,
             editBirthday: false,
-            username: "",
-            email: "",
-            phone_number: "",
-            address: "",
+            username: this.props.user.username,
+            email: this.props.user.email,
+            phone_number: this.props.user.phone_number,
+            address: this.props.user.address,
             password: "",
-            birthday: ""
+            birthday: this.props.user.birthday
         }
     }
+
+    componentDidMount() {
+
+    }
+
 
     // EDIT VIEWS
     handleEditView = () => {
@@ -88,7 +92,7 @@ class EditProfile extends Component {
         .then(res => {
             console.log(res.data);
             this.props.getUser(res.data[0]);
-            this.setState({username: username});
+            this.setState({username: this.props.user.username});
         })
         .catch(err => console.log(err));
     }
@@ -99,102 +103,113 @@ class EditProfile extends Component {
     render() { 
         console.log(this.props.user);
         return ( 
-            <div>
-                <div className="edit-wrapper">
-                    <p>Profile photo</p>
+            <div className="edit-wrapper-m">
+                <div className="edit-wrapper styled">
+                    <h4>Profile photo</h4>
                     <img src={this.props.user.profile_picture} alt={this.state.username}/>
                     <button>Upload</button>
                 </div>
-                <div className="edit-wrapper">
-                    <h3>Information</h3>
+
+                <div className="edit-wrapper styled2">
+                    <h4>Information</h4>
 
                     {/* Change username */}
                     {!this.state.editView
                     ? 
-                    <div>
-                        <p>Name: {this.state.username}</p>
-                        <button onClick={this.handleEditView}>Edit</button>
+                    <div className="edit-wrapper-m centering-div">
+                        <h4 className="edit-h4">Name: {this.props.user.username}</h4>
+                        <button onClick={this.handleEditView} className="edit-profile-btn">Edit</button>
                         </div>
                     : (
-                    <div>
+                    <div className="edit-wrapper-m centering-div">
+                        <h4 className="edit-h4">Name: {this.state.name}</h4>
                         <input 
                             value={this.state.username}
                             placeholder="Enter new name"
                             onChange={(e) => this.handleUsername(e.target.value)}
                             />
-                            <button onClick={this.handleEditView}>Submit</button>
+                            <button onClick={this.handleEditView} className="edit-profile-btn">Submit</button>
                     </div>)}
                     
                     {/* Change email */}
                     {!this.state.editEmail
                     ? 
-                    <div>
-                        <p>Email: {this.state.email}</p>
-                        <button onClick={this.handleEditEmail}>Edit</button>
+                    <div className="edit-wrapper-m centering-div"> 
+                        <h4 className="edit-h4">Email: {this.props.user.email}</h4>
+                        <button onClick={this.handleEditEmail} className="edit-profile-btn">Edit</button>
                     </div>
                     : (
-                        <div>
+                        <div className="edit-wrapper-m centering-div">
+                            <h4 className="edit-h4">Email: {this.state.email} </h4>
                             <input 
                             value={this.state.email}
                             placeholder="Enter new email"
-                            onChange={(e) => this.handleEmail(e.target.value)}/>
-                            <button onClick={this.handleEditEmail}>Submit</button>
+                            onChange={(e) => this.handleEmail(e.target.value)}
+                            />
+                            <button onClick={this.handleEditEmail} className="edit-profile-btn">Submit</button>
                         </div>
                     )}
                     
                     {/* Change phone */}
                     {!this.state.editPhone
                     ?
-                    <div>
-                        <p>Phone number: {this.state.phone_number}</p>
-                        <button onClick={this.handleEditPhone} >Edit</button>
+                    <div className="edit-wrapper-m centering-div">
+                        <h4 className="edit-h4">Phone number: {this.props.user.phone_number}</h4>
+                        <button onClick={this.handleEditPhone} className="edit-profile-btn">Edit</button>
                     </div>
                     : (
-                        <div>
+                        <div className="edit-wrapper-m centering-div">
+                            <h4 className="edit-h4">Phone number: {this.state.phone_number} </h4>
                             <input 
                             value={this.state.phone}
                             placeholder="Enter new phone number"
                             onChange={(e) => this.handlePhone(e.target.value)} />
-                            <button onClick={this.handleEditPhone} >Submit</button>
+                            <button onClick={this.handleEditPhone} className="edit-profile-btn">Submit</button>
                         </div>
                     )}
 
                     {/* Change address */}
                     {!this.state.editAddress
                     ?
-                    <div><p>Address: {this.state.address}</p>
-                    <button onClick={this.handleEditAddress}>Edit</button></div>
+                    <div className="edit-wrapper-m centering-div">
+                        <h4 className="edit-h4">Address: {this.props.user.address}</h4>
+                        <button onClick={this.handleEditAddress} className="edit-profile-btn">Edit</button>
+                    </div>
                     : (
-                        <div>
+                        <div className="edit-wrapper-m centering-div">
+                            <h4 className="edit-h4">Address: {this.state.address} </h4>
                             <input 
                             value={this.state.address}
                             placeholder="Enter your address"
                             onChange={(e) => this.handleAddress(e.target.value)} />
-                            <button onClick={this.handleEditAddress}>Submit</button>
+                            <button onClick={this.handleEditAddress} className="edit-profile-btn">Submit</button>
                         </div>
                     )}
                     
                     {/* Change password */}
-                    <p>Password:</p>
-                    <button>Edit</button>
+                    <h4 className="edit-h4">Password:</h4>
+                    <button className="edit-profile-btn">Edit</button>
 
                     {/* Change birthday */}
                     {!this.state.editBirthday
                     ?
-                    <div><p>Birthday: {this.state.birthday}</p>
-                    <button onClick={this.handleEditBirthday}>Edit</button></div>
+                    <div className="edit-wrapper-m centering-div">
+                        <h4 className="edit-h4">Birthday: {this.props.user.birthday}</h4>
+                        <button onClick={this.handleEditBirthday} className="edit-profile-btn">Edit</button>
+                    </div>
                     : (
-                        <div>
+                        <div className="edit-wrapper-m centering-div">
+                            <h4 className="edit-h4">Birthday {this.state.birthday} </h4>
                             <input 
                             value={this.state.birthday}
                             placeholder="Enter your birthday"
                             onChange={(e) => this.handleBirthday(e.target.value)} />
-                            <button onClick={this.handleEditBirthday}>Submit</button>
+                            <button onClick={this.handleEditBirthday} className="edit-profile-btn">Submit</button>
                         </div>
                     )}
                     
                 </div>
-                <button onClick={this.updateUserInfo}>Save</button>
+                <button onClick={this.updateUserInfo} className="edit-profile-btn">Save</button>
             </div>
          );
     }

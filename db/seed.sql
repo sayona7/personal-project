@@ -42,7 +42,4 @@ create table calendar (
     available int
 );
 
--- select *
--- from pets p
--- join users u
--- on u.user_id = p.user_id;
+

@@ -34,7 +34,7 @@ class Login extends Component {
     render() {
         let {email, password} = this.state; 
         return ( 
-            <div className="wrapper"> 
+            <div className="wrapper loginWrapper"> 
                 <div className="login-box">
                     <div>
                         <h1 className="login-header">Welcome!</h1>

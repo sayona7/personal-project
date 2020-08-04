@@ -3,24 +3,65 @@ import "./pets.css";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import "./pets.css";
+import {getPet, addPet, updatePetArr} from "../../../redux/petReducer";
 
 class Pet extends Component {
-    state = {  }
+    constructor(props) {
+        super(props);
+        this.state = { 
+            name: "",
+            age: "",
+            breed: "",
+            gender: "",
+            imgUrl: "",
+            description: ""
+         }
+    }
+    
+    handleInput = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    handleSubmit = (e) => {
+        this.props.addPet({...this.state})
+    }
+
     render() { 
         return ( 
             <div className="pets-Wrapper">
             <img src="https://via.placeholder.com/150" alt="animal" />
             <div className="petInfo">
-                <p>Name</p>
-                <p>Age</p>
-                <p>Breed</p>
-                <p>Male/female</p>
-                <p>Description</p>
-                <Link to="/edit-pet"><button>Edit</button></Link>
+                <p>
+                    Name:
+                    <input name='name' onChange={this.handleInput} />
+                </p>
+                <p>
+                    Age:
+                    <input name="age" onChange={this.handleInput} />
+                    </p>
+                <p>
+                    Breed:
+                    <input name='breed' onChange={this.handleInput} />
+                    </p>
+                <p>
+                    Male/female:
+                    <input name='gender' onChange={this.handleInput} />
+                </p>
+                <p>
+                    Image URL:
+                    <input name='imgUrl' onChange={this.handleInput} />
+                </p>
+                <p>
+                    Description:
+                    <input name='description' onChange={this.handleInput} />
+                </p>
+                
             </div>
             </div>
          );
     }
 }
  
-export default Pet;
+const mapStateToProps = reduxState => reduxState.petReducer;
+ 
+export default connect(mapStateToProps, {getPet, updatePetArr, addPet})(Pet);

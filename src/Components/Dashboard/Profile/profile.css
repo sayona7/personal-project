@@ -1,7 +1,6 @@
 /* Profile Styling */
 .profileWrapper {
     margin: 10px;
-    background-color: beige;
     width: 350px;
     height: auto;
     display: flex;
@@ -12,13 +11,102 @@
 
 
 /* EditProfile Styling */
+.edit-wrapper-m {
+    margin: 15px;
+}
+
 .edit-wrapper {
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
     flex-direction: column;
-    width: auto;
+    /* width: auto; */
+    background-color: white;
+    width: 400px;
+    margin: auto;
 }
 
+.styled {
+    width: 25%;
+    background: linear-gradient(to right,#01a9ac,#01dbdf);
+    padding: 30px 25px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+    color: #fff;
+}
 
+.styled2 {
+    width: 50%;
+    background: #fff;
+    padding: 30px 25px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+ img{
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  h4{
+    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+  }
+  
+  p {
+    font-size: 18px;
+  }
+
+  .centering-div {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+  }
+
+  .edit-h4 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+  }
+
+  .edit-profile-btn {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: skyblue;
+    /* padding: 20px; */
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    border: none;
+    transition: all 0.4s ease 0s;
+    height: 50px;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .edit-profile-btn:hover {
+    background: #434343;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+  }

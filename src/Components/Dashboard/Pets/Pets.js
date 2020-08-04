@@ -1,29 +1,41 @@
 import React, { Component } from 'react';
 import "./pets.css";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import "./pets.css";
 import Pet from "./Pet";
 import axios from 'axios';
-import {getPet} from "../../../redux/petReducer";
+import {Link} from "react-router-dom";
+import {getPet, updatePetArr} from "../../../redux/petReducer";
+import EditPets from './EditPets';
 
 class Pets extends Component {
     constructor(props) {
         super(props);
         this.state = {
             pets: [],
-            user_id: "",
-            name: "",
+            editing: false
         }
     }
 
     addPet = () => {
-        const {user_id, name} = this.state;
-
-        axios.post("/api/pet/add", {user_id, name})
+        const {pets} = this.state;
+        const newPets = [];
+       
+        axios.post("/api/pet/add")
         .then((res) => {
             this.props.getPet(res.data[0]);
+            console.log(this.props.pet)
+            // this.props.getPet(newPets);
+
+            newPets.push( <Pet petInfo={this.props.pet} />)
+            
+            this.setState({pets: [...pets, newPets]});
+            console.log(this.state.pets);
+
+            this.props.updatePetArr(newPets);
         })
+
+        
         
     }
 
@@ -31,18 +43,20 @@ class Pets extends Component {
 
     }
 
+    toggleEdit = () => {
+        this.setState({editing: !this.state.editing});
+    }
+
 
     render() { 
-        const listedPets = this.state.pets.map((id, index) => (
-                            <div>
-                                <Pet key={index} id={id}/>
-                                <button>Delete</button>
-                            </div>
-                        ))
+
         return ( 
             <div className="editpets-wrapper">
-                {listedPets}     
-                <button onClick={this.addPet}>Add your pet!</button>
+                <div>
+                    <Link to="/edit-pet">
+                        <button>Add your pet!</button>
+                    </Link>
+                </div>
             </div>
          );
     }
@@ -50,4 +64,4 @@ class Pets extends Component {
  
 const mapStateToProps = reduxState => reduxState.petReducer;
  
-export default connect(mapStateToProps, {getPet})(Pets);
+export default connect(mapStateToProps, {getPet, updatePetArr})(Pets);

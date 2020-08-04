@@ -9,6 +9,9 @@ body {
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.loginWrapper {
     position: absolute;
     top: 15%;
     left: 38%;

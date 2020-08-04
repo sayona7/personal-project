@@ -1,5 +1,5 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
-// import promiseMiddleware from "redux-promise-middleware";
+import promiseMiddleware from "redux-promise-middleware";
 import reducer from "./reducer";
 import petReducer from "./petReducer";
 
@@ -8,4 +8,4 @@ const rootReducer = combineReducers({
     petReducer: petReducer
 })
 
-export default createStore(rootReducer);
+export default createStore(rootReducer, applyMiddleware(promiseMiddleware));

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
 import Cal from "./Calendar/Calendar";
-import Navbar from "./Navbar/Navbar";
 import "./main.css";
-import axios from 'axios';
+
 import {connect} from 'react-redux';
 
 
@@ -14,16 +13,14 @@ class Dashboard extends Component {
         this.state = {  }
     }
 
-    // componentDidMount() {
-    //     if(!this.props.user.email) {
-    //         this.props.history.push("/");
-    //     }
-    // }
+    componentDidMount() {
+        // alert('Veronica rocks! you can do it')
+    }
 
     render() { 
+        console.log(this.props)
         return ( 
             <div>
-                {/* <Navbar history={this.props.history}/> */}
                 <Cal />
                 <div className="mainWrapper">
                     <Profile />
@@ -35,6 +32,6 @@ class Dashboard extends Component {
     }
 }
  
-const mapStateToProps = reduxState => reduxState;
+const mapStateToProps = reduxState => reduxState.petReducer;
 
 export default connect(mapStateToProps)(Dashboard);

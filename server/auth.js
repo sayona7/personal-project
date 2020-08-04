@@ -13,7 +13,7 @@ module.exports = {
         const hash = await bcrypt.hash(password, 10);
 
         // send stuff to db
-        const newUser = await db.auth.add_user({email, password: hash})
+        const newUser = await db.auth.add_user({email, hash})
         delete newUser[0].hash;
 
         // log user in by creating session
