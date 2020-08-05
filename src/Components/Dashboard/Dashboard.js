@@ -30,7 +30,6 @@ class Dashboard extends Component {
             this.setState({petsArray: res.data})
             console.log(this.state.petsArray);
             this.props.updatePetArr(this.state.petsArray);
-            // console.log(this.state.petsArray[4].pet_id)
         })
     }
 

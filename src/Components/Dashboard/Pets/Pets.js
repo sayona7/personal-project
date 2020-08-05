@@ -48,9 +48,6 @@ class Pets extends Component {
     //     }) 
     // }
 
-    deletePet = () => {
-
-    }
 
     toggleEdit = () => {
         this.setState({editing: !this.state.editing});
@@ -60,7 +57,6 @@ class Pets extends Component {
         if (this.state.petsArray !== null && this.props.petsArray !== null) {
             let mappedPets;
             return mappedPets = this.props.petsArray.map((index, i) => (
-                <div>
                 <Pet
                 key={index}
                 pet_id={this.props.petsArray[i].pet_id}
@@ -71,8 +67,6 @@ class Pets extends Component {
                 description={this.props.petsArray[i].description}
                 getPets={this.props.getPetsArray} 
                 />
-                <button onClick={this.props.getPetsArray}>Delete</button>
-                </div>
             ))
         } else {
             return <button>Add your pet!</button>
@@ -85,7 +79,6 @@ class Pets extends Component {
         return ( 
             <div className="editpets-wrapper">
                 {this.renderPetArray()}
-                
                 <Link to="/edit-pet">
                     <div>
                         <button>Add your pet!</button>

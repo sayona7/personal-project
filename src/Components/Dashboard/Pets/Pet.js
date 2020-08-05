@@ -20,6 +20,16 @@ class Pet extends Component {
     }
     
    
+    deletePet = () => {
+        const pet_id = this.props.pet_id;
+        console.log(pet_id)
+
+        axios.delete(`/api/pet/${pet_id}`)
+        .then(() => {
+            console.log("success deleting")
+        })
+        .catch(err => console.log(err));
+    }
 
     render() { 
         return ( 
@@ -48,6 +58,7 @@ class Pet extends Component {
                         
                     </div>
                     <button>Edit</button>
+                    <button onClick={this.deletePet}>Delete</button>
                 </div>
             </div>
          );
