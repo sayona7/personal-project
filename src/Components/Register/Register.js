@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import "./register.css";
 
 class Register extends Component {
     constructor(props) {
@@ -36,11 +37,10 @@ class Register extends Component {
     }
 
     render() { 
-        let {loggedInUser, email, password} = this.state; 
+        let { email, password} = this.state; 
         return ( 
-            <div className="wrapper">
-                <div className="login-box">
-                    <div>
+            <div className="register-wrapper">
+                <div className="register-box">
                         <h1 className="login-header">Sing up</h1>
                         <div className="inputs-box">
                             <p>Email:</p>
@@ -67,7 +67,6 @@ class Register extends Component {
                         <div className="buttons-box">
                             <button className="buttons" onClick={this.singup}>Register</button>
                             <button className="buttons" onClick={this.login} >Login</button>
-                        </div>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 .petsWrapper {
-    margin: auto;
+    margin: 20px;
     background-color: beige;
     width: 350px;
     height: auto;
@@ -9,7 +9,6 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    width: 50%;
 }
 
 .pets-Wrapper {
@@ -28,5 +27,9 @@
 
 .editpets-wrapper {
     margin: 15px;
+}
+
+.separator {
+    margin: 25px;
 }
 

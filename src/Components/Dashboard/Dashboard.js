@@ -3,28 +3,50 @@ import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
 import Cal from "./Calendar/Calendar";
 import "./main.css";
-
+import {updatePetArr} from "../../redux/petReducer";
 import {connect} from 'react-redux';
+import axios from "axios";
 
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            petsArray: null
+         }
     }
 
     componentDidMount() {
-        // alert('Veronica rocks! you can do it')
+        this.getPetsArray();
     }
 
+    getPetsArray = () => {
+        const {user_id} = this.props.user;
+        const petsArray = this.state.petsArray;
+
+        axios.get("/api/pet/get-pets", {user_id})
+        .then((res) => {
+            console.log(res.data);
+            this.setState({petsArray: res.data})
+            console.log(this.state.petsArray);
+            this.props.updatePetArr(this.state.petsArray);
+            // console.log(this.state.petsArray[4].pet_id)
+        })
+    }
+
+    
+
     render() { 
-        console.log(this.props)
+
         return ( 
             <div>
                 <Cal />
                 <div className="mainWrapper">
                     <Profile />
-                    <Pets />
+                    <Pets 
+                    petsArray={this.state.petsArray}
+                    getPetsArray={this.getPetsArray}
+                    />
                 </div>
                 
             </div>
@@ -32,6 +54,6 @@ class Dashboard extends Component {
     }
 }
  
-const mapStateToProps = reduxState => reduxState.petReducer;
+const mapStateToProps = reduxState => reduxState.reducer;
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {updatePetArr})(Dashboard);

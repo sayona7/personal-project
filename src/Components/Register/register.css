@@ -1,0 +1,13 @@
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.register-box {
+    background-color: beige;
+    width: 350px;
+    height: 500px;
+    
+}

@@ -10,6 +10,7 @@ const initialState = {
 const GET_PET = "GET_PET";
 const ADD_PET = "ADD_PET";
 const UPDATE_PET_ARR = "UPDATE_PET_ARR";
+const DELETE_PET = "DELETE_PET";
 
 // const CLEAR_PET = "CLEAR_PET";
 
@@ -30,7 +31,15 @@ export function addPet(petObj) {
     }
 }
 
+export function deletePet(petObj) {
+    return {
+        type: DELETE_PET,
+        payload: petObj
+    }
+}
+
 export function updatePetArr(petArr) {
+    console.log(petArr);
     return {
         type: UPDATE_PET_ARR,
         payload: petArr
@@ -53,7 +62,13 @@ export default function petReducer(state = initialState, action) {
                 ...state,
                 petsArray: payload.data
             }
+        case `${DELETE_PET}_FULFILLED`:
+            return {
+                ...state,
+                payload: payload.data
+            }
         case UPDATE_PET_ARR:
+            console.log(payload);
             return {...state.array, payload};
         default:
             return state;

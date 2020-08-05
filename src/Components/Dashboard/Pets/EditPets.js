@@ -12,11 +12,11 @@ class EditPets extends Component {
             editBreedView: false,
             editGenderView: false,
             editDescriptionView: false,
-            name: this.props.pet.name,
-            age: this.props.pet.age,
-            breed: this.props.pet.breed,
-            gender: this.props.pet.gender,
-            description: this.props.pet.description
+            name: "",
+            age: null,
+            breed: "",
+            gender: "",
+            description: ""
         }
     }
 
@@ -87,7 +87,7 @@ class EditPets extends Component {
                         {!this.state.editAgeView
                         ?
                         <div>
-                            <h4>Age: {this.props.pet.age}</h4>
+                            <h4>Age: {this.state.age}</h4>
                             <button onClick={this.handleAgeView}>Edit</button>
                         </div>
                         :
@@ -101,7 +101,7 @@ class EditPets extends Component {
                         {!this.state.editBreedView 
                         ?
                         <div>
-                            <h4>Breed: {this.props.pet.breed}</h4>
+                            <h4>Breed: {this.state.breed}</h4>
                             <button onClick={this.handleBreedView}>Edit</button>
                         </div>
                         :
@@ -115,7 +115,7 @@ class EditPets extends Component {
                         {!this.state.editGenderView 
                         ?
                         <div>
-                            <h4>Gender: {this.props.pet.gender}</h4>
+                            <h4>Gender: {this.state.gender}</h4>
                             <button onClick={this.handleGenderView}>Edit</button>
                         </div>
                         :
@@ -133,7 +133,7 @@ class EditPets extends Component {
                         {!this.state.editDescriptionView 
                         ?
                         <div>
-                            <h4>Description: {this.props.pet.description}</h4>
+                            <h4>Description: {this.state.description}</h4>
                             <button onClick={this.handleDescriptionView}>Edit</button>
                         </div>
                         :

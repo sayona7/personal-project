@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from "../Dashboard/Navbar/Navbar";
 import "./about.css";
 import {Link} from "react-router-dom";
 
@@ -11,7 +10,6 @@ class About extends Component {
     render() { 
         return ( 
             <div>
-            <Navbar history={this.props.history}/>
             <div className="about-wrapper">
                 <div id="about-title">
                     <h1 id="about-h1">About Veronica:</h1>

@@ -45,5 +45,7 @@ app.put("/api/user/:id", user.updateUserInfo);
 
 // pet update controllers
 app.post("/api/pet/add", pet.addPet);
+app.delete("/api/pet/:pet_id", pet.deletePet);
+app.get("/api/pet/get-pets", pet.getPets);
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`));

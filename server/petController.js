@@ -19,4 +19,21 @@ module.exports = {
         .then(pet => res.status(200).send(pet))
         .catch(err => console.log(err));
     },
+    getPets: async (req, res) => {
+        const db = req.app.get("db");
+        const {user_id} = req.session.user;
+
+        db.pets.check_pets(user_id)
+        .then(pets => res.status(200).send(pets))
+        .catch(err => console.log(err));
+    },
+    deletePet: async (req, res) => {
+        console.log(req.params)
+        const db = req.app.get("db");
+        const {pet_id} = req.params;
+
+        db.pets.delete_pet(pet_id)
+        .then(() => res.status(200))
+        .catch(err => console.log(err));
+    },
 }

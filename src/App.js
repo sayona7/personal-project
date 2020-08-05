@@ -7,7 +7,7 @@ import Navbar from './Components/Dashboard/Navbar/Navbar';
 function App(props) {
   return (
     <div>
-      {props.location.pathname === "/" ?
+      {props.location.pathname === "/" || props.location.pathname === "/register" ?
       null 
       : (
         <Navbar history={props.history}/>

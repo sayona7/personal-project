@@ -2,25 +2,27 @@ body {
     background-color: skyblue;
 }
 
-.wrapper {
+.wrapper-login {
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;  
+    margin-left: -10px;
+    margin-top: -10px;
 }
 
-.loginWrapper {
-    position: absolute;
-    top: 15%;
-    left: 38%;
-}
 
 .login-box {
     background-color: beige;
     width: 350px;
-    height: 500px;
+    
 }
 
 .login-header {

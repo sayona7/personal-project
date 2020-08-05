@@ -1,55 +1,54 @@
 import React, { Component } from 'react';
 import "./pets.css";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 import "./pets.css";
-import {getPet, addPet, updatePetArr} from "../../../redux/petReducer";
+import {getPet, addPet, updatePetArr, deletePet} from "../../../redux/petReducer";
+import axios from 'axios';
 
 class Pet extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            name: "",
-            age: "",
-            breed: "",
-            gender: "",
+            pet_id: this.props.pet_id,
+            name: this.props.name,
+            age: this.props.age,
+            breed: this.props.breed,
+            gender: this.props.gender,
             imgUrl: "",
-            description: ""
+            description: this.props.description
          }
     }
     
+   
 
     render() { 
         return ( 
-            <div className="pets-Wrapper">
-            <img src="https://via.placeholder.com/150" alt="animal" />
-            <div className="petInfo">
-                <p>
-                    Name:
-                    <input name='name' onChange={this.handleInput} />
-                </p>
-                <p>
-                    Age:
-                    <input name="age" onChange={this.handleInput} />
-                    </p>
-                <p>
-                    Breed:
-                    <input name='breed' onChange={this.handleInput} />
-                    </p>
-                <p>
-                    Male/female:
-                    <input name='gender' onChange={this.handleInput} />
-                </p>
-                <p>
-                    Image URL:
-                    <input name='imgUrl' onChange={this.handleInput} />
-                </p>
-                <p>
-                    Description:
-                    <input name='description' onChange={this.handleInput} />
-                </p>
-                
-            </div>
+            <div className="separator">
+                <div className="pets-Wrapper">
+                    <img src="https://via.placeholder.com/150" alt="animal" />
+                    <div className="petInfo">
+                        <p>
+                            Name: {this.state.name}
+                        </p>
+                        <p>
+                            Age: {this.state.age}
+                            </p>
+                        <p>
+                            Breed: {this.state.breed}
+                            </p>
+                        <p>
+                            Male/female: {this.state.gender}
+                        </p>
+                        <p>
+                            Image URL:
+                        </p>
+                        <p>
+                            Description: {this.state.description}
+                        </p>
+                        
+                    </div>
+                    <button>Edit</button>
+                </div>
             </div>
          );
     }
@@ -57,4 +56,4 @@ class Pet extends Component {
  
 const mapStateToProps = reduxState => reduxState.petReducer;
  
-export default connect(mapStateToProps, {getPet, updatePetArr, addPet})(Pet);
+export default connect(mapStateToProps, {getPet, updatePetArr, addPet, deletePet})(Pet);

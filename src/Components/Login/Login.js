@@ -28,13 +28,14 @@ class Login extends Component {
             // this.setState({loggedInUser: res.data, email: "", password: ""});
             this.props.history.push("/dash");
             });
+        
     }
 
 
     render() {
         let {email, password} = this.state; 
         return ( 
-            <div className="wrapper loginWrapper"> 
+            <div className="wrapper-login"> 
                 <div className="login-box">
                     <div>
                         <h1 className="login-header">Welcome!</h1>

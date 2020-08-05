@@ -6,9 +6,10 @@
 }
 
 
-.wrapper{
+.wrapper {
   width: 450px;
   display: flex;
+  flex-direction: column;
 }
 
 .wrapper .left{
@@ -19,6 +20,7 @@
   border-bottom-left-radius: 5px;
   text-align: center;
   color: #fff;
+
 }
 
 .wrapper .left img{
