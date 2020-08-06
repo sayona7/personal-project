@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Profile from './Profile/Profile';
 import Pets from "./Pets/Pets";
 import Cal from "./Calendar/Calendar";
+import Img from "./ImgUpload/Img";
 import "./main.css";
 import {updatePetArr} from "../../redux/petReducer";
 import {connect} from 'react-redux';
@@ -22,12 +23,10 @@ class Dashboard extends Component {
 
     getPetsArray = () => {
         const {user_id} = this.props.user;
-        // const petsArray = this.state.petsArray;
 
         axios.get("/api/pet/get-pets", {user_id})
         .then((res) => {
             this.setState({petsArray: res.data})
-            console.log(this.state.petsArray);
             this.props.updatePetArr(this.state.petsArray);
         })
     }
@@ -39,10 +38,11 @@ class Dashboard extends Component {
         return ( 
             <div>
                 <Cal />
+                {/* <ImgUpload/> */}
+                {/* <Img /> */}
                 <div className="mainWrapper">
                     <Profile />
                     <Pets 
-                    // petsArray={this.state.petsArray}
                     getPetsArray={this.getPetsArray}
                     />
                 </div>

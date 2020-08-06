@@ -16,21 +16,8 @@ class Pets extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     // const {pets} = this.state.pets;
-        
-    //     if (this.props.petsArray !== null) {
-    //         console.log(this.props.petsArray)
-    //         const petsArray = this.props.petsArray[0];
-    //         this.setState({pets: this.props.petsArray});
-    //         console.log(this.props.petsArray)
-    //     }
-    // }
-
     componentDidUpdate(prevProps) {
-        console.log(prevProps.petsArray.length)
         if (this.props.petsArray.length !== prevProps.petsArray.length) {
-            console.log("prevprops are working")
             this.renderPetArray();
         }
     }
@@ -41,7 +28,6 @@ class Pets extends Component {
     }
     
     renderPetArray = () => {
-        console.log(this.props.petsArray)
         if (this.props.petsArray !== undefined) {
             let mappedPets;
             return mappedPets = this.props.petsArray.map((index, i) => (
@@ -79,7 +65,6 @@ class Pets extends Component {
 }
  
 const mapStateToProps = reduxState => {
-    console.log(reduxState.petReducer.petsArray)
     return {
         petsArray: reduxState.petReducer.petsArray
     }

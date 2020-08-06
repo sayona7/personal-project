@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getUser} from "../../../redux/reducer";
 import "./profile.css";
 import axios from "axios";
+import Img from "../ImgUpload/Img";
 
 class EditProfile extends Component {
     constructor(props){
@@ -14,6 +15,7 @@ class EditProfile extends Component {
             editAddress: false,
             editPassword: false,
             editBirthday: false,
+            editPhoto: false,
             username: this.props.user.username,
             email: this.props.user.email,
             phone_number: this.props.user.phone_number,
@@ -51,6 +53,10 @@ class EditProfile extends Component {
 
     handleEditBirthday = () => {
         this.setState({editBirthday: !this.state.editBirthday});
+    }
+
+    handleEditPhoto = () => {
+        this.setState({editPhoto: !this.state.editPhoto});
     }
 
     // EDIT VIEWS
@@ -92,11 +98,12 @@ class EditProfile extends Component {
         .then(res => {
             console.log(res.data);
             this.props.getUser(res.data[0]);
-            this.setState({username: this.props.user.username});
+            // this.setState({username: this.props.user.username});
         })
         .catch(err => console.log(err));
     }
 
+    // User Image Upload call
 
     // BACKEND CALLS
 
@@ -106,8 +113,18 @@ class EditProfile extends Component {
             <div className="edit-wrapper-m">
                 <div className="edit-wrapper styled">
                     <h4>Profile photo</h4>
-                    <img src={this.props.user.profile_picture} alt={this.state.username}/>
-                    <button>Upload</button>
+                    <img src={this.props.user.profile_picture} alt={this.state.username} className="edit-profile-photo"/>
+                    {!this.state.editPhoto 
+                    ?
+                    <div>
+                        <button onClick={this.handleEditPhoto}>Add a photo</button>
+                    </div>
+                    :
+                    <div>
+                        <Img/>
+                    </div>
+                     }
+                    {/* <button>Upload</button> */}
                 </div>
 
                 <div className="edit-wrapper styled2">

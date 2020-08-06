@@ -42,6 +42,7 @@ app.get("/auth/user", auth.user);
 
 // profile update controllers
 app.put("/api/user/:id", user.updateUserInfo);
+app.put("/api/user/:id/photo", user.updatePhoto);
 
 // pet update controllers
 app.post("/api/pet/add", pet.addPet);

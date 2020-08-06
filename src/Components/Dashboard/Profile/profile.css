@@ -15,6 +15,11 @@
     margin: 15px;
 }
 
+.edit-profile-photo {
+  width: 300px;
+  height: 220px;
+}
+
 .edit-wrapper {
     display: flex;
     justify-content: center;

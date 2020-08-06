@@ -10,4 +10,15 @@ module.exports = {
         .then(user => res.status(200).send(user))
         .catch(err => console.log(err));
     },
+    updatePhoto: (req, res) => {
+        const {user_id} = req.session.user,
+               db = req.app.get("db"),
+              {profile_picture} = req.body;
+              console.log(profile_picture);
+
+        db.users.updateUserPhoto(user_id, profile_picture)
+        .then(obj => res.status(200).send(obj))
+        .catch(err => console.log(err));
+
+    },
 }

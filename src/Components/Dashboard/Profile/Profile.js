@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
+import {getUser} from "../../../redux/reducer"
 import {Link} from "react-router-dom";
 import "./profile.css";
 import "./styles.css";
@@ -7,10 +8,11 @@ import "./styles.css";
 class Profile extends Component {
 
     render() { 
+        console.log(this.props.user);
         return ( <div className="profileWrapper">
             <div className="wrapper">
                 <div className="left">
-                    <img src="https://i.imgur.com/cMy8V5j.png" 
+                    <img src={this.props.user.profile_picture} 
                     alt="user" width="150"/>
 
                     {this.props.user.username !== null ?
@@ -60,4 +62,4 @@ class Profile extends Component {
 
 const mapStateToProps = reduxState => reduxState.reducer;
  
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, {getUser})(Profile);
