@@ -31,9 +31,10 @@ module.exports = {
         console.log(req.params)
         const db = req.app.get("db");
         const {pet_id} = req.params;
+        const {user_id} = req.session.user;
 
-        db.pets.delete_pet(pet_id)
-        .then(() => res.status(200))
+        db.pets.delete_pet(user_id, pet_id)
+        .then(pets => res.status(200).send(pets))
         .catch(err => console.log(err));
     },
 }

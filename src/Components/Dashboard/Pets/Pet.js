@@ -23,12 +23,14 @@ class Pet extends Component {
     deletePet = () => {
         const pet_id = this.props.pet_id;
         console.log(pet_id)
-
         axios.delete(`/api/pet/${pet_id}`)
-        .then(() => {
-            console.log("success deleting")
+        .then((res) => {
+            console.log("success deleting!");
+            console.log(res.data);
+            this.props.updatePetArr(res.data);
         })
         .catch(err => console.log(err));
+
     }
 
     render() { 

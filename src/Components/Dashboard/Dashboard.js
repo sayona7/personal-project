@@ -22,11 +22,10 @@ class Dashboard extends Component {
 
     getPetsArray = () => {
         const {user_id} = this.props.user;
-        const petsArray = this.state.petsArray;
+        // const petsArray = this.state.petsArray;
 
         axios.get("/api/pet/get-pets", {user_id})
         .then((res) => {
-            console.log(res.data);
             this.setState({petsArray: res.data})
             console.log(this.state.petsArray);
             this.props.updatePetArr(this.state.petsArray);
@@ -43,7 +42,7 @@ class Dashboard extends Component {
                 <div className="mainWrapper">
                     <Profile />
                     <Pets 
-                    petsArray={this.state.petsArray}
+                    // petsArray={this.state.petsArray}
                     getPetsArray={this.getPetsArray}
                     />
                 </div>

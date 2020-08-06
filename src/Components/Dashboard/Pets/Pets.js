@@ -16,37 +16,24 @@ class Pets extends Component {
         }
     }
 
-    componentDidMount() {
-        const pets = this.state.pets;
-        if (this.props.petsArray !== null) {
-            const petsArray = this.props.petsArray[0];
-            this.setState({pets: [...pets, petsArray]});
-        }
-
-        // if (prevProps.pets.length !== this.props.pets.length) {
-        //     console.log("statement working")
-        // }
- 
-    }
-
-    // addPet = () => {
-    //     const {pets} = this.state;
-    //     const newPets = [];
-       
-    //     axios.post("/api/pet/add")
-    //     .then((res) => {
-    //         this.props.getPet(res.data[0]);
-    //         console.log(this.props.pet)
-    //         // this.props.getPet(newPets);
-
-    //         newPets.push( <Pet petInfo={this.props.pet} />)
-            
-    //         this.setState({pets: [...pets, newPets]});
-    //         console.log(this.state.pets);
-
-    //         this.props.updatePetArr(newPets);
-    //     }) 
+    // componentDidMount() {
+    //     // const {pets} = this.state.pets;
+        
+    //     if (this.props.petsArray !== null) {
+    //         console.log(this.props.petsArray)
+    //         const petsArray = this.props.petsArray[0];
+    //         this.setState({pets: this.props.petsArray});
+    //         console.log(this.props.petsArray)
+    //     }
     // }
+
+    componentDidUpdate(prevProps) {
+        console.log(prevProps.petsArray.length)
+        if (this.props.petsArray.length !== prevProps.petsArray.length) {
+            console.log("prevprops are working")
+            this.renderPetArray();
+        }
+    }
 
 
     toggleEdit = () => {
@@ -54,7 +41,8 @@ class Pets extends Component {
     }
     
     renderPetArray = () => {
-        if (this.state.petsArray !== null && this.props.petsArray !== null) {
+        console.log(this.props.petsArray)
+        if (this.props.petsArray !== undefined) {
             let mappedPets;
             return mappedPets = this.props.petsArray.map((index, i) => (
                 <Pet
@@ -75,6 +63,7 @@ class Pets extends Component {
 
 
     render() { 
+    
 
         return ( 
             <div className="editpets-wrapper">
@@ -89,6 +78,11 @@ class Pets extends Component {
     }
 }
  
-const mapStateToProps = reduxState => reduxState.petReducer;
+const mapStateToProps = reduxState => {
+    console.log(reduxState.petReducer.petsArray)
+    return {
+        petsArray: reduxState.petReducer.petsArray
+    }
+};
  
 export default connect(mapStateToProps, {getPet, updatePetArr})(Pets);

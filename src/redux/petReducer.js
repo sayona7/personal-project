@@ -38,11 +38,11 @@ export function deletePet(petObj) {
     }
 }
 
-export function updatePetArr(petArr) {
-    console.log(petArr);
+export function updatePetArr(petsArray) {
+    console.log(petsArray);
     return {
         type: UPDATE_PET_ARR,
-        payload: petArr
+        payload: petsArray
     }
 }
 
@@ -69,7 +69,7 @@ export default function petReducer(state = initialState, action) {
             }
         case UPDATE_PET_ARR:
             console.log(payload);
-            return {...state.array, payload};
+            return {...state, petsArray: payload};
         default:
             return state;
     }
