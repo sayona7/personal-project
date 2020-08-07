@@ -111,13 +111,14 @@ class EditProfile extends Component {
         console.log(this.props.user);
         return ( 
             <div className="edit-wrapper-m">
+                <div>
                 <div className="edit-wrapper styled">
                     <h4>Profile photo</h4>
                     <img src={this.props.user.profile_picture} alt={this.state.username} className="edit-profile-photo"/>
                     {!this.state.editPhoto 
                     ?
                     <div>
-                        <button onClick={this.handleEditPhoto}>Add a photo</button>
+                        <button onClick={this.handleEditPhoto} className="edit-profile-btn">Add a photo</button>
                     </div>
                     :
                     <div>
@@ -223,9 +224,11 @@ class EditProfile extends Component {
                             <button onClick={this.handleEditBirthday} className="edit-profile-btn">Submit</button>
                         </div>
                     )}
-                    
+
+                    <div><button onClick={this.updateUserInfo} className="edit-profile-btn">Save</button></div>
+                    </div>
                 </div>
-                <button onClick={this.updateUserInfo} className="edit-profile-btn">Save</button>
+                
             </div>
          );
     }

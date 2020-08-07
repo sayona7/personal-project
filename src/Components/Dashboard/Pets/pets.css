@@ -27,6 +27,10 @@
 
 .editpets-wrapper {
     margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .separator {
@@ -71,6 +75,49 @@
     display: flex;
     justify-content: center;
 
+}
+
+.second-epw {
+  display: flex;
+  justify-content: center;
+}
+
+.epw-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-profile-btn {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: skyblue;
+  /* padding: 20px; */
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  border: none;
+  transition: all 0.4s ease 0s;
+  height: 50px;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.edit-profile-btn:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+}
+
+#submit-pet {
+  background: linear-gradient(to right,#01a9ac,#01dbdf);
 }
 
 /* styles file content */

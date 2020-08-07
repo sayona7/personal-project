@@ -120,6 +120,7 @@ class EditPets extends Component {
             <div>
 
                 <div className="editpets-wrapper">
+                    <div classname="second-epw">
 
                     <div className="petsWrapper">
                         <p>Profile photo</p>
@@ -127,17 +128,17 @@ class EditPets extends Component {
                         {!this.state.editPhotoView 
                         ?
                         <div>
-                            <img src={this.state.pet_photo} alt="Add your photo!"/>
-                            <button onClick={this.handlePhotoView}>Add a photo</button>
+                            <img src={this.state.pet_photo} alt="Here goes your pet photo"/>
+                            <button onClick={this.handlePhotoView} className="edit-profile-btn">Add a photo</button>
                         </div>
                         :
                         <div style={style}>
                             <progress value={this.state.progress} max="100"/>
                             <br/>
                             <input type="file" onChange={this.handleChange}/>
-                            <button onClick={this.handleUpload}>Upload</button>
+                            <button onClick={this.handleUpload} className="edit-profile-btn">Upload</button>
                             <br/>
-                            <img src={this.state.pet_photo || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
+                            <img src={this.state.pet_photo || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="auto" width="300"/>
                         </div>
                         }
                         
@@ -150,7 +151,7 @@ class EditPets extends Component {
                         ? 
                         <div>
                             <h4>Name: {this.state.name}</h4>
-                            <button onClick={this.handleNameView}>Edit</button>
+                            <button onClick={this.handleNameView} className="edit-profile-btn">Edit</button>
                         </div>
                         :
                         <div>
@@ -159,7 +160,7 @@ class EditPets extends Component {
                             value={this.state.name} 
                             name='name' 
                             onChange={this.handleInput} />
-                            <button onClick={this.handleNameView}>Save</button>
+                            <button onClick={this.handleNameView} className="edit-profile-btn">Save</button>
                         </div>
                         }
 
@@ -167,13 +168,13 @@ class EditPets extends Component {
                         ?
                         <div>
                             <h4>Age: {this.state.age}</h4>
-                            <button onClick={this.handleAgeView}>Edit</button>
+                            <button onClick={this.handleAgeView} className="edit-profile-btn">Edit</button>
                         </div>
                         :
                         <div>
                             <h4>Age: {this.state.age}</h4>
                             <input name="age" onChange={this.handleInput} />
-                            <button onClick={this.handleAgeView}>Save</button>
+                            <button onClick={this.handleAgeView} className="edit-profile-btn">Save</button>
                         </div>
                         }
 
@@ -181,13 +182,13 @@ class EditPets extends Component {
                         ?
                         <div>
                             <h4>Breed: {this.state.breed}</h4>
-                            <button onClick={this.handleBreedView}>Edit</button>
+                            <button onClick={this.handleBreedView} className="edit-profile-btn">Edit</button>
                         </div>
                         :
                         <div>
                             <h4>Breed: {this.state.breed}</h4>
                             <input name='breed' onChange={this.handleInput} />
-                            <button onClick={this.handleBreedView}>Save</button>
+                            <button onClick={this.handleBreedView} className="edit-profile-btn">Save</button>
                         </div>
                         }
 
@@ -195,13 +196,13 @@ class EditPets extends Component {
                         ?
                         <div>
                             <h4>Gender: {this.state.gender}</h4>
-                            <button onClick={this.handleGenderView}>Edit</button>
+                            <button onClick={this.handleGenderView} className="edit-profile-btn">Edit</button>
                         </div>
                         :
                         <div>
                             <h4>Gender: {this.state.gender}</h4>
                             <input name='gender' onChange={this.handleInput} />
-                            <button onClick={this.handleGenderView}>Save</button>
+                            <button onClick={this.handleGenderView} className="edit-profile-btn">Save</button>
                             {/* <select>
                             <option>Female</option>
                             <option>Male</option>
@@ -213,18 +214,19 @@ class EditPets extends Component {
                         ?
                         <div>
                             <h4>Description: {this.state.description}</h4>
-                            <button onClick={this.handleDescriptionView}>Edit</button>
+                            <button onClick={this.handleDescriptionView} className="edit-profile-btn">Edit</button>
                         </div>
                         :
                         <div>
                             <h4>Description: </h4>
                             <input name='description' onChange={this.handleInput} />
-                            <button onClick={this.handleDescriptionView}>Save</button>
+                            <button onClick={this.handleDescriptionView} className="edit-profile-btn">Save</button>
                         </div>
                         }
 
                     </div>
-                    <button onClick={(e) => this.handleSubmit(e)}>Submit</button>
+                    <div className="epw-btn"><button onClick={(e) => this.handleSubmit(e)} className="edit-profile-btn" id="submit-pet">Submit</button></div>
+                    </div>
                 </div>
             </div>
          );
