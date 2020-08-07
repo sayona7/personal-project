@@ -5,6 +5,8 @@ import "./pets.css";
 import Pet from "./Pet";
 import {Link} from "react-router-dom";
 import {getPet, updatePetArr} from "../../../redux/petReducer";
+import axios from "axios";
+import "../../../App.css";
 
 
 class Pets extends Component {
@@ -26,20 +28,32 @@ class Pets extends Component {
     toggleEdit = () => {
         this.setState({editing: !this.state.editing});
     }
+
+    deletePet = (id) => {
+        const pet_id = id;
+        axios.delete(`/api/pet/${pet_id}`)
+        .then((res) => {
+            this.props.updatePetArr(res.data);
+        })
+        .catch(err => console.log(err));
+
+    }
     
     renderPetArray = () => {
         if (this.props.petsArray !== undefined) {
             let mappedPets;
             return mappedPets = this.props.petsArray.map((index, i) => (
                 <Pet
-                key={index}
+                key={index.pet_id}
                 pet_id={this.props.petsArray[i].pet_id}
                 name={this.props.petsArray[i].name}
                 age={this.props.petsArray[i].age}
                 breed={this.props.petsArray[i].breed}
                 gender={this.props.petsArray[i].gender}
                 description={this.props.petsArray[i].description}
+                pet_photo={this.props.petsArray[i].pet_photo}
                 getPets={this.props.getPetsArray} 
+                deletePet={this.deletePet}
                 />
             ))
         } else {
@@ -54,11 +68,6 @@ class Pets extends Component {
         return ( 
             <div className="editpets-wrapper">
                 {this.renderPetArray()}
-                <Link to="/edit-pet">
-                    <div>
-                        <button>Add your pet!</button>
-                    </div> 
-                </Link>
             </div>
          );
     }

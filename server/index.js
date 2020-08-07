@@ -48,5 +48,6 @@ app.put("/api/user/:id/photo", user.updatePhoto);
 app.post("/api/pet/add", pet.addPet);
 app.delete("/api/pet/:pet_id", pet.deletePet);
 app.get("/api/pet/get-pets", pet.getPets);
+app.put("/api/pet/:pet_id/photo", pet.updatePetPhoto);
 
 app.listen(SERVER_PORT, () => console.log(`Server listening on ${SERVER_PORT}`));

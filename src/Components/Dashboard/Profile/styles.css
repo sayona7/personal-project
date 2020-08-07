@@ -10,17 +10,21 @@
   width: 450px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
-.wrapper .left{
-  width: 35%;
+ .left {
+  width: 65%;
   background: linear-gradient(to right,#01a9ac,#01dbdf);
   padding: 30px 25px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   text-align: center;
   color: #fff;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper .left img{

@@ -2,11 +2,10 @@ module.exports = {
     addPet: async (req, res) => {
         const db = req.app.get("db");
         const {user_id} = req.session.user;
-        const { name, age, breed, gender, description } = req.body
+        const { name, age, breed, gender, description, pet_photo } = req.body
         // destructure imgUrl from body when you need it
 
-        // const newPet = await db.pets.add_pet({user_id, name});
-        db.pets.add_pet(user_id, name, age, breed, gender, description)
+        db.pets.add_pet(user_id, name, age, breed, gender, description, pet_photo)
         .then(pets => res.status(200).send(pets))
         .catch(err => console.log(err));
     },
@@ -37,4 +36,14 @@ module.exports = {
         .then(pets => res.status(200).send(pets))
         .catch(err => console.log(err));
     },
+    updatePetPhoto: (req, res) => {
+        const {user_id} = req.session.user;
+        const db = req.app.get("db");
+        const {pet_id, pet_photo} = req.body;
+        console.log(pet_id, pet_photo);
+
+        db.pets.updatePetPhoto(user_id, pet_id, pet_photo)
+        .then(pet => res.status(200).send(pet))
+        .catch(err => console.log(err));
+    }
 }

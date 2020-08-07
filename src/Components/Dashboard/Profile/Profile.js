@@ -8,12 +8,12 @@ import "./styles.css";
 class Profile extends Component {
 
     render() { 
-        console.log(this.props.user);
+
         return ( <div className="profileWrapper">
             <div className="wrapper">
                 <div className="left">
                     <img src={this.props.user.profile_picture} 
-                    alt="user" width="150"/>
+                    alt="user" width="300"/>
 
                     {this.props.user.username !== null ?
                     <h4>{this.props.user.username}</h4>
@@ -21,6 +21,7 @@ class Profile extends Component {
                     <h4>User</h4>
                     }
                     <p>Birthday: {this.props.user.birthday}</p>
+                    <Link to="/edit-pet"><button className="pet-btn add-btn">Add your pet!</button></Link>
                 </div>
                 <div className="right">
                     <div className="info">

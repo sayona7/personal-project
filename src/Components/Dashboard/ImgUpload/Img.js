@@ -45,7 +45,7 @@ class ImageUpload extends Component {
               .then(res => {
                   console.log(res.data[0])
                   console.log(this.state.url);
-                //   this.props.getUser(res.data[0]);
+                  this.props.getUser(res.data[0]);
                 //   handleEditPhoto();
               })
               .catch(err => console.log(err));

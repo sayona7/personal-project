@@ -1,7 +1,9 @@
 import React, {Component} from  "react";
 import {connect} from "react-redux";
 import "./pets.css";
-import {addPet} from "../../../redux/petReducer";
+import {addPet, updatePetArr, getPet} from "../../../redux/petReducer";
+import {storage} from "../../../firebase/index";
+// import axios from "axios";
 
 class EditPets extends Component {
     constructor(props) {
@@ -12,13 +14,62 @@ class EditPets extends Component {
             editBreedView: false,
             editGenderView: false,
             editDescriptionView: false,
+            editPhotoView: false,
             name: "",
             age: null,
             breed: "",
             gender: "",
-            description: ""
+            description: "",
+            image: null,
+            pet_photo: "",
+            progress: 0
         }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleUpload = this.handleUpload.bind(this);
     }
+
+    // IMAGE UPLOAD SECTION //
+
+    handleChange = e => {
+        if (e.target.files[0]) {
+          const image = e.target.files[0];
+          this.setState(() => ({image}));
+        }
+      }
+
+      handleUpload = () => {
+          const {image} = this.state;
+          const uploadTask = storage.ref(`images/${image.name}`).put(image);
+          uploadTask.on('state_changed', 
+          (snapshot) => {
+            // progrss function ....
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+            this.setState({progress});
+          }, 
+          (error) => {
+               // error function ....
+            console.log(error);
+          }, 
+        () => {
+            // complete function ....
+            storage.ref('images').child(image.name).getDownloadURL().then(pet_photo => {
+                console.log(pet_photo);
+                this.setState({pet_photo});
+    
+                // axios.put(`/api/pet/${this.props.pet.pet_id}/photo`, {pet_id: this.props.pet.pet_id, pet_photo: this.state.pet_photo})
+                //   .then(res => {
+                //       console.log(res.data[0])
+                //       console.log(this.props.petsArray.pet_id);
+                //       console.log(this.state.pet_photo);
+                //     //   this.props.updatePetArr(res.data[0]);
+                //     //   handleEditPhoto();
+                //   })
+                //   .catch(err => console.log(err));
+            })
+        });
+    
+          
+      }
 
 
     // INPUT FUNCTION //
@@ -47,12 +98,24 @@ class EditPets extends Component {
         this.setState({editDescriptionView: !this.state.editDescriptionView});
     }
 
+    handlePhotoView = () => {
+        this.setState({editPhotoView: !this.state.editPhotoView});
+    }
+
+    // Redux state update
     handleSubmit = (e) => {
         this.props.addPet({...this.state});
         console.log(this.props);
     }
 
     render() { 
+        const style = {
+            height: '50vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+          };
         return ( 
             <div>
 
@@ -60,8 +123,24 @@ class EditPets extends Component {
 
                     <div className="petsWrapper">
                         <p>Profile photo</p>
-                        <img src="" alt="placeholder"/>
-                        <button>Upload</button>
+                        
+                        {!this.state.editPhotoView 
+                        ?
+                        <div>
+                            <img src={this.state.pet_photo} alt="Add your photo!"/>
+                            <button onClick={this.handlePhotoView}>Add a photo</button>
+                        </div>
+                        :
+                        <div style={style}>
+                            <progress value={this.state.progress} max="100"/>
+                            <br/>
+                            <input type="file" onChange={this.handleChange}/>
+                            <button onClick={this.handleUpload}>Upload</button>
+                            <br/>
+                            <img src={this.state.pet_photo || 'http://via.placeholder.com/400x300'} alt="Uploaded images" height="300" width="400"/>
+                        </div>
+                        }
+                        
                     </div>
                     
                     <div className="petsWrapper">
@@ -154,4 +233,4 @@ class EditPets extends Component {
  
 const mapStateToProps = reduxState => reduxState.petReducer;
  
-export default connect(mapStateToProps, {addPet})(EditPets);
+export default connect(mapStateToProps, {addPet, updatePetArr, getPet})(EditPets);

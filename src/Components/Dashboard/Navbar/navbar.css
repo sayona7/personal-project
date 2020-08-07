@@ -20,6 +20,33 @@
     margin: 20px;
 }
 
+.links-style {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* margin: 10px; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(to right,#01a9ac,#01dbdf);
+}
+
+.navbar-links:hover {
+    background: linear-gradient(to right,#0151ac,#a160ec);
+}
+
+
+.user-p {
+
+}
+
 .nav-profile {
     display: flex;
     flex-wrap: wrap;
@@ -31,6 +58,11 @@
 #nav-pic {
     margin: 10px;
     width: 100px;
+    display: flex;
+}
+
+.nav-img-div {
+    display: flex;
 }
 
 #nav-btn {
@@ -59,4 +91,11 @@
 
 a {
     text-decoration: none;
+}
+
+.nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }

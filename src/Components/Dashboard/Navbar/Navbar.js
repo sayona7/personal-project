@@ -28,24 +28,24 @@ class Navbar extends Component {
         return (
             <nav>
                 <div className="nav-links">
-                    <div>
-                        <Link to="/about" className="links">About</Link>
-                        <Link to="/chat" className="links">Chat</Link>
-                        <Link to="/dash" className="links">Dashboard</Link>
+                    <div className="links links-style">
+                        <div className="navbar-links"><Link to="/about" className="links">About</Link></div>
+                        <div className="navbar-links"><Link to="/chat" className="links">Chat</Link></div>
+                        <div className="navbar-links"><Link to="/dash" className="links">Dashboard</Link></div>
                     </div>
                     <div className="nav-profile">
-                        <div>
+                        <div className="nav-button">
                             {this.props.user.username !== null ?  
-                            <p>Welcome {this.props.user.username}</p>
+                            <p className="user-p">Welcome {this.props.user.username}</p>
                             :
-                            <p>Welcome User</p>
+                            <p className="user-p">Welcome User</p>
                             }
                             
                         </div>
                         <div id="nav-img-div">
                             <img src={this.props.user.profile_picture} alt="placeholder" id="nav-pic"/>
                         </div>
-                        <div>
+                        <div className="nav-button">
                         <button id="nav-btn" onClick={this.handleLogout}>Logout</button>
                         </div>
                     </div>

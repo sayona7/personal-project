@@ -124,7 +124,6 @@ class EditProfile extends Component {
                         <Img/>
                     </div>
                      }
-                    {/* <button>Upload</button> */}
                 </div>
 
                 <div className="edit-wrapper styled2">
