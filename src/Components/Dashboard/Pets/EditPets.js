@@ -122,7 +122,7 @@ class EditPets extends Component {
                 <div className="editpets-wrapper">
                     <div classname="second-epw">
 
-                    <div className="petsWrapper">
+                    <div className="petsWrapper wrapper-p left-p">
                         <p>Profile photo</p>
                         
                         {!this.state.editPhotoView 
@@ -144,7 +144,7 @@ class EditPets extends Component {
                         
                     </div>
                     
-                    <div className="petsWrapper">
+                    <div className="petsWrapper wrapper-p right-p">
                         <h3>Information</h3>
 
                         {!this.state.editNameView 
